@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interface" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Remove="global.json" />
   </ItemGroup>
 

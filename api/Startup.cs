@@ -47,8 +47,13 @@ namespace api
             }
 
             app.UseCors("AllowAnyOrigin");
+            
+            app.UseStaticFiles();
+            
             app.UseHttpsRedirection();
-
+            
+            app.UseAuthorization();
+            
             app.UseRouting();
 
             app.UseAuthorization();
