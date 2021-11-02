@@ -21,10 +21,12 @@ namespace api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            MongoDefaults.GuidRepresentation = MongoDB.Bson.GuidRepresentation.Standard;
             services.AddSingleton<IMongoDatabase>(
                 new MongoClient(Configuration.GetSection("mongodb:ConnectionString").Value)
                     .GetDatabase(Configuration.GetSection("mongodb:databaseName").Value));
             services.AddTransient<ProductService>();
+            services.AddTransient<QuizService>();
 
 
             services.AddControllers();
@@ -47,13 +49,13 @@ namespace api
             }
 
             app.UseCors("AllowAnyOrigin");
-            
+
             app.UseStaticFiles();
-            
+
             app.UseHttpsRedirection();
-            
+
             app.UseAuthorization();
-            
+
             app.UseRouting();
 
             app.UseAuthorization();

@@ -27,13 +27,15 @@ namespace API.Services
 
         public async Task<Product> Create(Product product)
         {
-            product.Id ??= Guid.NewGuid();
+            product.Id = Guid.NewGuid();
             await _products.InsertOneAsync(product);
             return product;
         }
 
         public async Task<bool> Update(Guid id, Product product)
         {
+            var p = await _products.Find(quiz => quiz.Id == id).FirstOrDefaultAsync();
+            if (p == null) return false;
             product.Id = id;
             var res = await _products.ReplaceOneAsync(p => p.Id == id, product);
             return res is { IsAcknowledged: true, ModifiedCount: > 0 };
@@ -41,7 +43,9 @@ namespace API.Services
 
         public async Task<bool> Remove(Guid id)
         {
-            var res =await _products.DeleteOneAsync(p => p.Id == id);
+            var p = await _products.Find(quiz => quiz.Id == id).FirstOrDefaultAsync();
+            if (p == null) return false;
+            var res = await _products.DeleteOneAsync(p => p.Id == id);
             return res is { IsAcknowledged: true, DeletedCount: > 0 };
 
         }

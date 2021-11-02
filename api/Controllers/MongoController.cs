@@ -40,16 +40,12 @@ namespace API.Controllers
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> Update(Guid id, Product product)
         {
-            var p = await _productService.Get(id);
-            if (p == null) return NotFound();
             return await _productService.Update(id, product) ? NoContent() : NotFound();
         }
 
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var p = await _productService.Get(id);
-            if (p == null) return NotFound();
             return await _productService.Remove(id) ? NoContent() : NotFound();
         }
     }
