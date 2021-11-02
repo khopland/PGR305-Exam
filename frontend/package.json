@@ -6,7 +6,7 @@
     "build": "tsc && vite build",
     "serve": "vite preview",
     "format": "prettier --write ./src",
-    "dev:all": "concurrently \"npm run dev\" \"dotnet run --project ../api \""
+    "dev:all": "concurrently \"npm run dev\" \"dotnet watch --project ../api \""
   },
   "dependencies": {
     "@types/react-router-dom": "^5.1.9",

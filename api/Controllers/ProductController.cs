@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using API.Models;
+using API.Enum;
 using API.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,11 +9,10 @@ namespace API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class MongoController : ControllerBase
+    public class ProductController : ControllerBase
     {
         private readonly ProductService _productService;
-
-        public MongoController(ProductService productService)
+        public ProductController(ProductService productService)
         {
             _productService = productService;
         }
@@ -28,6 +27,13 @@ namespace API.Controllers
         public async Task<ActionResult<Product>> Get(Guid id)
         {
             var product = await _productService.Get(id);
+            return product != null ? Ok(product) : NotFound();
+        }
+
+        [HttpGet("category/{category}")]
+        public async Task<ActionResult<List<Product>>> Get(CategoryEnum category)
+        {
+            var product = await _productService.GetByCategory(category);
             return product != null ? Ok(product) : NotFound();
         }
 
