@@ -8,12 +8,7 @@ export interface props {
   children: React.ReactNode;
 }
 
-export const InputSelect = ({
-  value,
-  onValueChange,
-  label,
-  children,
-}: props) => {
+export function InputSelect({ value, onValueChange, label, children }: props) {
   return (
     <Form.Group as={Row}>
       <Form.Label>{label}</Form.Label>
@@ -26,4 +21,4 @@ export const InputSelect = ({
       </Form.Control>
     </Form.Group>
   );
-};
+}

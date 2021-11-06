@@ -8,21 +8,18 @@ export const MainNav = () => {
     <Navbar bg="dark" variant="dark">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          konuslent
+          Ecomers
         </Navbar.Brand>
         <Nav>
           <Nav.Link as={Link} to="/">
             Hjem
           </Nav.Link>
-          {/* <Nav.Link as={Link} to="/prosjekt">
-            prosjekt
+          <Nav.Link as={Link} to="cart">
+            cart
           </Nav.Link>
-          <Nav.Link as={Link} to="/ansatte">
-            Ansatte
+          <Nav.Link as={Link} to="admin">
+            admin
           </Nav.Link>
-          <Nav.Link as={Link} to="/kunder">
-            Kunder
-          </Nav.Link> */}
         </Nav>
       </Container>
     </Navbar>

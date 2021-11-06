@@ -1,26 +1,28 @@
 import { FC } from 'react';
 import Button from 'react-bootstrap/esm/Button';
 import Card from 'react-bootstrap/esm/Card';
-import { Product } from '../../types/product';
+import IProduct from '../../interfaces/product';
+import { Category } from '../../types/product';
 
 export interface ProductCardProps {
-  product: Product;
-  onClick?: (product: Product) => void;
+  product: IProduct;
+  onClick?: (product: IProduct) => void;
 }
 export const ProductCard: FC<ProductCardProps> = ({
   product,
   onClick,
 }: ProductCardProps) => {
+  const showMoney = (price: number): String => {
+    return (price / 100).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + '.kr';
+  };
+
   return (
-    <Card style={{ width: '18rem' }}>
-      {product.image?.length != 0 && (
-        <Card.Img variant="top" src="holder.js/100px180" />
-      )}
-      <Card.Body>
-        <Card.Title>{product.name}</Card.Title>
+    <Card style={{ width: '22rem', height: '25rem', margin: '2rem' }}>
+      {product.image && <Card.Img variant="top" src={product.image} />}
+      <Card.Body className="text-white d-flex flex-column justify-content-end align-items-center">
+        <Card.Title style={{ fontSize: '2rem' }}>{product.name}</Card.Title>
         <Card.Text>
-          {product.category}|{product.price}
-          {product.description}
+          <div>{showMoney(product.price)}</div>
         </Card.Text>
         <Button
           variant="primary"

@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction } from 'react';
 import { Form, Row } from 'react-bootstrap';
 
 export interface props {
-  value: string | number | undefined;
+  value: any;
   onValueChange: Dispatch<SetStateAction<any>>;
   required?: boolean;
   type?: string;
