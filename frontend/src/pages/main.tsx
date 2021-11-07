@@ -1,18 +1,25 @@
-import { useEffect, useState } from 'react';
-import { Container, Row, Image } from 'react-bootstrap';
+import { useContext, useEffect, useState } from 'react';
+import { Container, Row } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import { ProductCard } from '../components/home/productCard';
 import { ProductCausel } from '../components/home/ProductCarusel';
+import { productContext } from '../context/productContext';
 import IProduct from '../interfaces/product';
 import { getAllProducts } from '../service/productService';
 
 export const Main = () => {
-  const [Products, setProducts] = useState<IProduct[]>([]);
+  const navigate = useNavigate();
+  const { value, setContext } = useContext(productContext);
   useEffect(() => {
     getProducts();
   }, []);
 
   const getProducts = async () => {
-    setProducts(await getAllProducts());
+    setContext((await getAllProducts()) as IProduct[]);
+  };
+
+  const handleClick = (product: IProduct) => {
+    navigate(`${product.id}`, { replace: true });
   };
 
   return (
@@ -20,9 +27,10 @@ export const Main = () => {
       <ProductCausel />
       <br />
       <Row>
-        {Products.map((product, i) => (
-          <ProductCard key={i} product={product} />
-        ))}
+        {value &&
+          value?.map((product, i) => (
+            <ProductCard key={i} product={product} onClick={handleClick} />
+          ))}
       </Row>
     </Container>
   );

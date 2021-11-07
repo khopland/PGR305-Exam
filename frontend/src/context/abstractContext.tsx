@@ -4,26 +4,24 @@ type abstractContext<T> = {
   value: T | null;
   setContext: Dispatch<SetStateAction<T | null>>;
 };
-export default function abstractContext<T>(): [
-  React.Context<abstractContext<T>>,
-  FC
-] {
-  const initialContext: abstractContext<T> = {
-    value: null,
+export default function abstractContext<T>(
+  initialContext: T | null = null
+): [React.Context<abstractContext<T>>, FC] {
+  const context = createContext<abstractContext<T>>({
+    value: initialContext,
     setContext: (): void => {
       throw new Error('setContext function must be overridden');
     },
+  });
+
+  const componet: FC = ({ children }) => {
+    const [value, setContext] = useState<T | null>(null);
+    return (
+      <context.Provider value={{ value, setContext }}>
+        {children}
+      </context.Provider>
+    );
   };
-
-  const context = createContext<abstractContext<T>>(initialContext);
-
-  const [value, setContext] = useState<T | null>(null);
-
-  const componet: FC = (children) => (
-    <context.Provider value={{ value, setContext }}>
-      {children}
-    </context.Provider>
-  );
 
   return [context, componet];
 }
