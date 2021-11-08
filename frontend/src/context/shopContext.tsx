@@ -1,31 +1,33 @@
-import { createContext, FC, useReducer } from 'react';
-import IProduct from '../interfaces/product';
-import { useLocalStorage } from '../lib/useLocalSotrage';
+import { createContext, FC } from "react";
+import IProduct from "../interfaces/product";
+import { useLocalStorage } from "../lib/useLocalSotrage";
 
 type shopingCart = {
-  id: IProduct;
+  product: IProduct;
   amount: number;
 };
 
-type shopingCartContextType = {
+export type shopingCartContextType = {
   shopingCart: shopingCart[];
   addToShopingCart: (shopingCart: shopingCart) => boolean;
   removeFromShopingCart: (shopingCart: shopingCart) => boolean;
 };
 
-export const shopContext = createContext<shopingCartContextType | null>(null);
+export const ShopingCartContext = createContext<shopingCartContextType | null>(
+  null
+) as React.Context<shopingCartContextType>;
 
-export const ShopProvider: FC = ({ children }) => {
+export const ShopingCartProvider: FC = ({ children }) => {
   const [shopingCart, setShopingCart] = useLocalStorage(
-    'shopingCart',
+    "shopingCart",
     [] as shopingCart[]
   );
 
   const addToShopingCart = (shopingCart: shopingCart) =>
     setShopingCart((state) =>
-      state.find((item) => item.id === shopingCart.id)
+      state.find((item) => item.product.id === shopingCart.product.id)
         ? state.map((item) =>
-            item.id === shopingCart.id
+            item.product.id === shopingCart.product.id
               ? { ...item, amount: item.amount + shopingCart.amount }
               : item
           )
@@ -36,7 +38,7 @@ export const ShopProvider: FC = ({ children }) => {
     setShopingCart((state) =>
       state
         .map((item) =>
-          item.id === shopingCart.id
+          item.product.id === shopingCart.product.id
             ? { ...item, amount: item.amount - shopingCart.amount }
             : item
         )
@@ -44,10 +46,10 @@ export const ShopProvider: FC = ({ children }) => {
     );
 
   return (
-    <shopContext.Provider
+    <ShopingCartContext.Provider
       value={{ shopingCart, addToShopingCart, removeFromShopingCart }}
     >
       {children}
-    </shopContext.Provider>
+    </ShopingCartContext.Provider>
   );
 };

@@ -1,5 +1,5 @@
-import IProduct from '../interfaces/product';
-import abstractContext from './abstractContext';
+import IProduct from "../interfaces/product";
+import abstractContext from "./abstractContext";
 
 const [context, provider] = abstractContext<IProduct[]>();
 

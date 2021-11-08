@@ -1,9 +1,9 @@
-import { Carousel, Container } from 'react-bootstrap';
+import { Carousel, Container } from "react-bootstrap";
 
 export const ProductCausel = () => {
   return (
     <Container>
-      <Carousel variant="dark">
+      <Carousel variant="dark" style={{ objectFit: "cover" }}>
         <Carousel.Item>
           <img
             className="d-block w-100"

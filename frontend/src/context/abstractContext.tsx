@@ -1,4 +1,4 @@
-import { createContext, Dispatch, FC, SetStateAction, useState } from 'react';
+import { createContext, Dispatch, FC, SetStateAction, useState } from "react";
 
 type abstractContext<T> = {
   value: T | null;
@@ -10,7 +10,7 @@ export default function abstractContext<T>(
   const context = createContext<abstractContext<T>>({
     value: initialContext,
     setContext: (): void => {
-      throw new Error('setContext function must be overridden');
+      throw new Error("setContext function must be overridden");
     },
   });
 

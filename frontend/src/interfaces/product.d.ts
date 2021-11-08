@@ -1,4 +1,4 @@
-import { Category } from './categoryEnum';
+import { Category } from "./categoryEnum";
 
 export default interface IProduct {
   id?: String;

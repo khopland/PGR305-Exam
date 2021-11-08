@@ -1,17 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Routing } from './routing';
-import { ShopProvider } from './context/shopContext';
-import { ProductProvider } from './context/productContext';
+import React from "react";
+import ReactDOM from "react-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Routing } from "./routing";
+import { ShopingCartProvider } from "./context/shopContext";
+import { ProductProvider } from "./context/productContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <ProductProvider>
-      <ShopProvider>
+      <ShopingCartProvider>
         <Routing />
-      </ShopProvider>
+      </ShopingCartProvider>
     </ProductProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );

@@ -1,5 +1,6 @@
-import React from 'react';
-import { Form, Row } from 'react-bootstrap';
+import React from "react";
+import Form from "react-bootstrap/esm/Form";
+import Row from "react-bootstrap/esm/Row";
 
 export interface props {
   value: string | number | string[] | undefined;
