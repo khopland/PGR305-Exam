@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using API.Enum;
+using API.Models;
 using MongoDB.Driver;
 
 namespace API.Services
@@ -21,7 +22,7 @@ namespace API.Services
         }
         public async Task<Product?> Get(Guid id)
         {
-            return await _products.Find(p => p.Id!.Value == id).FirstOrDefaultAsync();
+            return await _products.Find(p => p.Id == id).FirstOrDefaultAsync();
         }
         public async Task<List<Product>> GetByCategory(CategoryEnum category)
         {

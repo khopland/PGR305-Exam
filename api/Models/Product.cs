@@ -1,10 +1,10 @@
 ﻿using System;
-using api.Interface;
+using API.Enum;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace API.Enum
+namespace API.Models
 {
-    public class Product : IProduct
+    public class Product
     {
         [BsonId]
         public Guid? Id { get; set; }

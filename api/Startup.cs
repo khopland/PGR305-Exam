@@ -27,6 +27,7 @@ namespace api
                 new MongoClient(Configuration.GetSection("mongodb:ConnectionString").Value)
                     .GetDatabase(Configuration.GetSection("mongodb:databaseName").Value));
             services.AddTransient<ProductService>();
+            services.AddTransient<OrderService>();
             services.AddControllers();
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo { Title = "api", Version = "v1" }); });
             services.AddCors(options => options.AddPolicy("AllowAnyOrigin", builder => builder

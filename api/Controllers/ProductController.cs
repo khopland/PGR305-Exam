@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using API.Enum;
+using API.Models;
 using API.Services;
 using Microsoft.AspNetCore.Mvc;
 
