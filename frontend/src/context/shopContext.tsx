@@ -1,16 +1,11 @@
 import { createContext, FC } from 'react';
-import IProduct from '../interfaces/product';
+import ICart from '../interfaces/cart';
 import { useLocalStorage } from '../lib/useLocalSotrage';
 
-type shopingCart = {
-  product: IProduct;
-  amount: number;
-};
-
 export type shopingCartContextType = {
-  shopingCart: shopingCart[];
-  addToShopingCart: (shopingCart: shopingCart) => boolean;
-  removeFromShopingCart: (shopingCart: shopingCart) => boolean;
+  shopingCart: ICart[];
+  addToShopingCart: (shopingCart: ICart) => boolean;
+  removeFromShopingCart: (shopingCart: ICart) => boolean;
   emtyShopingCart: () => boolean;
 };
 
@@ -21,12 +16,12 @@ export const ShopingCartContext = createContext<shopingCartContextType | null>(
 export const ShopingCartProvider: FC = ({ children }) => {
   const [shopingCart, setShopingCart] = useLocalStorage(
     'shopingCart',
-    [] as shopingCart[]
+    [] as ICart[]
   );
-  const validateShopingCart = (shopingCart: shopingCart): boolean =>
+  const validateShopingCart = (shopingCart: ICart): boolean =>
     shopingCart.amount <= 0;
 
-  const addToShopingCart = (shopingCart: shopingCart) =>
+  const addToShopingCart = (shopingCart: ICart) =>
     validateShopingCart(shopingCart)
       ? false
       : setShopingCart((state) =>
@@ -39,7 +34,7 @@ export const ShopingCartProvider: FC = ({ children }) => {
             : [...state, shopingCart]
         );
 
-  const removeFromShopingCart = (shopingCart: shopingCart) =>
+  const removeFromShopingCart = (shopingCart: ICart) =>
     validateShopingCart(shopingCart)
       ? false
       : setShopingCart((state) =>

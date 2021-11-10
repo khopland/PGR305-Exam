@@ -8,7 +8,8 @@ import Alert from 'react-bootstrap/esm/Alert';
 import { ShopingCartContext } from '../context/shopContext';
 import IProduct from '../interfaces/product';
 import { showMoney } from '../lib/showMoney';
-import { axios } from '../lib/http';
+import { CreateOrder } from '../service/orderService';
+import IOrder from '../interfaces/order';
 
 export const Cart = () => {
   const [show, setShow] = useState(false);
@@ -27,14 +28,10 @@ export const Cart = () => {
     removeFromShopingCart({ product, amount: 1 });
   };
   const sendOrder = async () => {
-    console.log('send order');
-    try {
-      console.log({ shopingCart });
-      const res = await axios.post('/order', { orders: shopingCart });
-      if (res.status === 200) emtyShopingCart();
+    const res = await CreateOrder({ orders: shopingCart });
+    if (res) {
+      emtyShopingCart();
       setShow(true);
-    } catch (error) {
-      console.error(error);
     }
   };
   const total = useMemo(

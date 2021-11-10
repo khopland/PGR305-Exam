@@ -1,7 +1,7 @@
-import React from "react";
-import { Navbar, Nav, NavItem, NavDropdown, Container } from "react-bootstrap";
+import React from 'react';
+import { Navbar, Nav, NavItem, NavDropdown, Container } from 'react-bootstrap';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 export const MainNav = () => {
   return (
@@ -17,8 +17,11 @@ export const MainNav = () => {
           <Nav.Link as={Link} to="cart">
             cart
           </Nav.Link>
+          <Nav.Link as={Link} to="orders">
+            orders
+          </Nav.Link>
           <Nav.Link as={Link} to="admin">
-            admin
+            add new product
           </Nav.Link>
         </Nav>
       </Container>
