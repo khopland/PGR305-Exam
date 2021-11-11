@@ -10,6 +10,7 @@ import IProduct from '../interfaces/product';
 import { showMoney } from '../lib/showMoney';
 import { getAllProducts } from '../service/productService';
 import Button from 'react-bootstrap/esm/Button';
+import { NewReview } from '../components/order/newReview';
 
 export const Product: FC = () => {
   const params = useParams();
@@ -115,6 +116,7 @@ export const Product: FC = () => {
               </Col>
             </Row>
           </Row>
+          <NewReview product={product} />
         </>
       ) : (
         <h1>Loading...</h1>

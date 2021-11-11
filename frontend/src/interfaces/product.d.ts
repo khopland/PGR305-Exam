@@ -1,4 +1,5 @@
-import { Category } from "./categoryEnum";
+import { Category } from './categoryEnum';
+import IReview from './review';
 
 export default interface IProduct {
   id?: String;
@@ -7,4 +8,5 @@ export default interface IProduct {
   description?: string;
   image?: string;
   category: Category;
+  rewiews?: Array<IReview>;
 }

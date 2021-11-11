@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using API.Enum;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -13,5 +14,6 @@ namespace API.Models
         public string? Description { get; set; }
         public string? Image { get; set; }
         public CategoryEnum Category { get; set; }
+        public List<Review>? Reviews { get; set; }
     }
 }
