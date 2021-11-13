@@ -8,9 +8,20 @@ interface props {
   order: IOrder;
 }
 export const OrderList: FC<props> = ({ order }: props) => {
+  function ISOtoLongDate(isoString: string, locale = "no-NO") {
+    const date = new Date(isoString);
+    const longDate = new Intl.DateTimeFormat(locale, {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    }).format(date);
+    return longDate;
+  }
+
   return (
     <Row>
       <h3>order number : {order.id}</h3>
+      <h5> {order.date && ` ${ISOtoLongDate(order.date)}`}</h5>
       <br />
       <Row>
         <Col>

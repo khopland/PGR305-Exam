@@ -7,7 +7,7 @@ export const getAllProducts = async () => {
 };
 export const getProductById = async (id: String) => {
   const res = await axios.get(`/product/${id}`);
-  return res.data as IProduct;
+  if (res.status === 200) return res.data as IProduct;
 };
 
 export const postProduct = async (

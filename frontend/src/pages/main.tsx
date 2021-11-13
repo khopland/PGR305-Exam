@@ -6,18 +6,10 @@ import { ProductCard } from "../components/home/productCard";
 import { ProductCausel } from "../components/home/ProductCarusel";
 import { productContext } from "../context/productContext";
 import IProduct from "../interfaces/product";
-import { getAllProducts } from "../service/productService";
 
 export const Main = () => {
   const navigate = useNavigate();
-  const { value, setContext } = useContext(productContext);
-  useEffect(() => {
-    getProducts();
-  }, []);
-
-  const getProducts = async () => {
-    setContext((await getAllProducts()) as IProduct[]);
-  };
+  const { value } = useContext(productContext);
 
   const handleClick = (product: IProduct) => {
     navigate(`${product.id}`, { replace: true });

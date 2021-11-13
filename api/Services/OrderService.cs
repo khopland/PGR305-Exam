@@ -25,6 +25,7 @@ namespace API.Services
         public async Task<Order> Create(Order order)
         {
             order.Id = Guid.NewGuid();
+            order.Date = DateTime.UtcNow;
             await _orders.InsertOneAsync(order);
             return order;
         }

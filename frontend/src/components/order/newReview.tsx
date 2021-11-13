@@ -72,7 +72,7 @@ export const NewReview = ({ product, onSubmit }: props) => {
 
             <Row style={{ paddingTop: 5 }}>
               <label> Rating:</label>
-              <Rate onChange={setRating} />
+              <Rate onChange={setRating} value={rating} />
             </Row>
             <br />
           </Col>

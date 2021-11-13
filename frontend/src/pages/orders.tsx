@@ -18,7 +18,11 @@ export const Orders = () => {
     <Container>
       <br />
 
-      {orders && orders?.map((order, i) => <OrderList key={i} order={order} />)}
+      {orders ? (
+        orders?.map((order, i) => <OrderList key={i} order={order} />)
+      ) : (
+        <div>No orders</div>
+      )}
     </Container>
   );
 };

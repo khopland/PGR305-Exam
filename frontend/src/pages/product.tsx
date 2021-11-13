@@ -8,14 +8,13 @@ import { productContext } from "../context/productContext";
 import { ShopingCartContext } from "../context/shopContext";
 import IProduct from "../interfaces/product";
 import { showMoney } from "../lib/showMoney";
-import { getProductById } from "../service/productService";
 import Button from "react-bootstrap/esm/Button";
 import { NewReview } from "../components/order/newReview";
 import { Review } from "../components/order/reviewComponent";
 
 export const Product: FC = () => {
   const { productid } = useParams();
-  const { value } = useContext(productContext);
+  const { value, getById, refresh } = useContext(productContext);
   const { addToShopingCart } = useContext(ShopingCartContext);
   const [amount, setAmount] = useState(1);
   const [product, setProduct] = useState<IProduct | null>(null);
@@ -32,14 +31,9 @@ export const Product: FC = () => {
 
   const getProduct = async () => {
     setError(false);
-    if (productid === undefined) {
-      setError(true);
-      return;
-    }
-    if (value?.length === 0 || value === null) {
-      const data = await getProductById(productid);
-      setProduct(data);
-    } else setProduct(value.find((x) => x.id === productid) || null);
+    productid !== undefined
+      ? setProduct((await getById(productid)) || null)
+      : setError(true);
   };
 
   const onClick = () => {
@@ -128,7 +122,7 @@ export const Product: FC = () => {
             <NewReview
               product={product}
               onSubmit={async () => {
-                setProduct(await getProductById(productid || ""));
+                refresh();
               }}
             />
           </Review>

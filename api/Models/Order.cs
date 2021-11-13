@@ -9,5 +9,6 @@ namespace API.Models
         [BsonId]
         public Guid? Id { get; set; }
         public List<OrderItem>? Orders { get; set; }
+        public DateTime? Date { get; set; }
     }
 }

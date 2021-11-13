@@ -9,9 +9,18 @@ export type shopingCartContextType = {
   emtyShopingCart: () => boolean;
 };
 
-export const ShopingCartContext = createContext<shopingCartContextType | null>(
-  null
-) as React.Context<shopingCartContextType>;
+export const ShopingCartContext = createContext<shopingCartContextType>({
+  shopingCart: [],
+  addToShopingCart: () => {
+    throw new Error("Context not initialized");
+  },
+  removeFromShopingCart: () => {
+    throw new Error("Context not initialized");
+  },
+  emtyShopingCart: () => {
+    throw new Error("Context not initialized");
+  },
+});
 
 export const ShopingCartProvider: FC = ({ children }) => {
   const [shopingCart, setShopingCart] = useLocalStorage(

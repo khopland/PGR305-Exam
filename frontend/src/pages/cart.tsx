@@ -9,7 +9,6 @@ import { ShopingCartContext } from "../context/shopContext";
 import IProduct from "../interfaces/product";
 import { showMoney } from "../lib/showMoney";
 import { CreateOrder } from "../service/orderService";
-import IOrder from "../interfaces/order";
 
 export const Cart = () => {
   const [show, setShow] = useState(false);
