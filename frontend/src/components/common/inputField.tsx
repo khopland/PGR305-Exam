@@ -1,6 +1,6 @@
-import { Dispatch, SetStateAction } from 'react';
-import Form from 'react-bootstrap/esm/Form';
-import Row from 'react-bootstrap/esm/Row';
+import { Dispatch, SetStateAction } from "react";
+import Form from "react-bootstrap/esm/Form";
+import Row from "react-bootstrap/esm/Row";
 
 export interface props {
   value: any;
@@ -14,7 +14,7 @@ export interface props {
 export function InputField({
   value,
   onValueChange,
-  type = 'text',
+  type = "text",
   required = false,
   label,
   as = Row,

@@ -1,10 +1,10 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Main } from './pages/main';
-import { Cart } from './pages/cart';
-import { AddNewProduct } from './pages/addNewProduct';
-import { Product } from './pages/product';
-import { MainNav } from './components/common/mainNav';
-import { Orders } from './pages/orders';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Main } from "./pages/main";
+import { Cart } from "./pages/cart";
+import { AddNewProduct } from "./pages/addNewProduct";
+import { Product } from "./pages/product";
+import { MainNav } from "./components/common/mainNav";
+import { Orders } from "./pages/orders";
 
 export const Routing = () => {
   return (

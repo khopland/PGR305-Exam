@@ -1,7 +1,7 @@
-import React from 'react';
-import { Navbar, Nav, NavItem, NavDropdown, Container } from 'react-bootstrap';
+import React from "react";
+import { Navbar, Nav, NavItem, NavDropdown, Container } from "react-bootstrap";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export const MainNav = () => {
   return (

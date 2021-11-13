@@ -1,13 +1,13 @@
-import React, { useRef, useState } from 'react';
-import Col from 'react-bootstrap/esm/Col';
-import Container from 'react-bootstrap/esm/Container';
-import Row from 'react-bootstrap/esm/Row';
-import { InputField } from '../components/common/inputField';
-import IProduct from '../interfaces/product';
-import { postProduct } from '../service/productService';
+import React, { useRef, useState } from "react";
+import Col from "react-bootstrap/esm/Col";
+import Container from "react-bootstrap/esm/Container";
+import Row from "react-bootstrap/esm/Row";
+import { InputField } from "../components/common/inputField";
+import IProduct from "../interfaces/product";
+import { postProduct } from "../service/productService";
 
 export const AddNewProduct = () => {
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [img, setImg] = useState<File>();
   const ref = useRef<HTMLInputElement>(null);
@@ -24,14 +24,14 @@ export const AddNewProduct = () => {
         )
       )
         clearData();
-      else alert('Error');
+      else alert("Error");
     }
   };
 
   const clearData = () => {
-    setName('');
+    setName("");
     setPrice(0);
-    if (ref.current) ref.current.value = '';
+    if (ref.current) ref.current.value = "";
     setImg(undefined);
   };
   return (

@@ -1,15 +1,15 @@
-import { useContext, useMemo, useState } from 'react';
-import Button from 'react-bootstrap/esm/Button';
-import Col from 'react-bootstrap/esm/Col';
-import Container from 'react-bootstrap/esm/Container';
-import Row from 'react-bootstrap/esm/Row';
-import Image from 'react-bootstrap/esm/Image';
-import Alert from 'react-bootstrap/esm/Alert';
-import { ShopingCartContext } from '../context/shopContext';
-import IProduct from '../interfaces/product';
-import { showMoney } from '../lib/showMoney';
-import { CreateOrder } from '../service/orderService';
-import IOrder from '../interfaces/order';
+import { useContext, useMemo, useState } from "react";
+import Button from "react-bootstrap/esm/Button";
+import Col from "react-bootstrap/esm/Col";
+import Container from "react-bootstrap/esm/Container";
+import Row from "react-bootstrap/esm/Row";
+import Image from "react-bootstrap/esm/Image";
+import Alert from "react-bootstrap/esm/Alert";
+import { ShopingCartContext } from "../context/shopContext";
+import IProduct from "../interfaces/product";
+import { showMoney } from "../lib/showMoney";
+import { CreateOrder } from "../service/orderService";
+import IOrder from "../interfaces/order";
 
 export const Cart = () => {
   const [show, setShow] = useState(false);
@@ -75,11 +75,11 @@ export const Cart = () => {
                       <Image
                         src={item.product.image}
                         style={{
-                          objectFit: 'cover',
-                          width: '10rem',
-                          height: '7rem',
-                          paddingLeft: '0.3rem',
-                          borderRadius: '1rem',
+                          objectFit: "cover",
+                          width: "10rem",
+                          height: "7rem",
+                          paddingLeft: "0.3rem",
+                          borderRadius: "1rem",
                         }}
                       />
                     </td>

@@ -1,49 +1,49 @@
-import { useState } from 'react';
-import Col from 'react-bootstrap/esm/Col';
-import Form from 'react-bootstrap/esm/Form';
-import Row from 'react-bootstrap/esm/Row';
-import { InputField } from '../common/inputField';
-import Rate from 'rc-rate';
-import 'rc-rate/assets/index.css';
-import Alert from 'react-bootstrap/esm/Alert';
-import { CreateReview } from '../../service/reviewService';
-import IProduct from '../../interfaces/product';
-import Button from 'react-bootstrap/esm/Button';
+import { useState } from "react";
+import Col from "react-bootstrap/esm/Col";
+import Form from "react-bootstrap/esm/Form";
+import Row from "react-bootstrap/esm/Row";
+import { InputField } from "../common/inputField";
+import Rate from "rc-rate";
+import "rc-rate/assets/index.css";
+import Alert from "react-bootstrap/esm/Alert";
+import { CreateReview } from "../../service/reviewService";
+import IProduct from "../../interfaces/product";
+import Button from "react-bootstrap/esm/Button";
 type props = {
   product: IProduct;
   onSubmit: () => void;
 };
 export const NewReview = ({ product, onSubmit }: props) => {
-  const [name, setName] = useState('');
-  const [review, setReview] = useState('');
+  const [name, setName] = useState("");
+  const [review, setReview] = useState("");
   const [rating, setRating] = useState(0);
   const [error, setError] = useState(false);
-  const [errorMessage, seterrorMessage] = useState('');
+  const [errorMessage, seterrorMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(false);
     if (name.length < 3) {
       setError(true);
-      seterrorMessage('Name must be at least 3 characters long');
+      seterrorMessage("Name must be at least 3 characters long");
       return;
     }
     if (review.length < 3) {
       setError(true);
-      seterrorMessage('Review must be at least 3 characters long');
+      seterrorMessage("Review must be at least 3 characters long");
       return;
     }
     if (rating < 0) {
       setError(true);
-      seterrorMessage('Rating must be set');
+      seterrorMessage("Rating must be set");
       return;
     }
     if (
       await CreateReview(product, { name, review, rating, date: new Date() })
     ) {
       onSubmit();
-      setName('');
-      setReview('');
+      setName("");
+      setReview("");
       setRating(0);
     }
   };

@@ -1,4 +1,4 @@
-import IProduct from './product';
+import IProduct from "./product";
 
 export default interface ICart {
   product: IProduct;

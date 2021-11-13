@@ -1,4 +1,4 @@
-import ICart from './cart';
+import ICart from "./cart";
 
 export default interface IOrder {
   id?: String;

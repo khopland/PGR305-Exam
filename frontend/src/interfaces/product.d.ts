@@ -1,5 +1,5 @@
-import { Category } from './categoryEnum';
-import IReview from './review';
+import { Category } from "./categoryEnum";
+import IReview from "./review";
 
 export default interface IProduct {
   id?: String;

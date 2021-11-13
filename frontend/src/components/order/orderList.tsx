@@ -1,8 +1,8 @@
-import { FC } from 'react';
-import Col from 'react-bootstrap/esm/Col';
-import Row from 'react-bootstrap/esm/Row';
-import IOrder from '../../interfaces/order';
-import { showMoney } from '../../lib/showMoney';
+import { FC } from "react";
+import Col from "react-bootstrap/esm/Col";
+import Row from "react-bootstrap/esm/Row";
+import IOrder from "../../interfaces/order";
+import { showMoney } from "../../lib/showMoney";
 
 interface props {
   order: IOrder;

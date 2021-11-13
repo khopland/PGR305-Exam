@@ -1,6 +1,6 @@
-import IProduct from '../interfaces/product';
-import IReview from '../interfaces/review';
-import { axios } from '../lib/http';
+import IProduct from "../interfaces/product";
+import IReview from "../interfaces/review";
+import { axios } from "../lib/http";
 
 export const CreateReview = async (
   product: IProduct,
