@@ -8,5 +8,5 @@ export default interface IProduct {
   description?: string;
   image?: string;
   category: Category;
-  rewiews?: Array<IReview>;
+  reviews?: Array<IReview>;
 }

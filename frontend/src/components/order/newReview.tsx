@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Col from 'react-bootstrap/esm/Col';
-import Container from 'react-bootstrap/esm/Container';
 import Form from 'react-bootstrap/esm/Form';
 import Row from 'react-bootstrap/esm/Row';
 import { InputField } from '../common/inputField';
@@ -9,10 +8,12 @@ import 'rc-rate/assets/index.css';
 import Alert from 'react-bootstrap/esm/Alert';
 import { CreateReview } from '../../service/reviewService';
 import IProduct from '../../interfaces/product';
+import Button from 'react-bootstrap/esm/Button';
 type props = {
   product: IProduct;
+  onSubmit: () => void;
 };
-export const NewReview = ({ product }: props) => {
+export const NewReview = ({ product, onSubmit }: props) => {
   const [name, setName] = useState('');
   const [review, setReview] = useState('');
   const [rating, setRating] = useState(0);
@@ -40,6 +41,7 @@ export const NewReview = ({ product }: props) => {
     if (
       await CreateReview(product, { name, review, rating, date: new Date() })
     ) {
+      onSubmit();
       setName('');
       setReview('');
       setRating(0);
@@ -50,7 +52,7 @@ export const NewReview = ({ product }: props) => {
   };
 
   return (
-    <Container>
+    <>
       {error && (
         <Alert variant="danger" onClick={() => setError(false)}>
           {errorMessage}
@@ -65,7 +67,13 @@ export const NewReview = ({ product }: props) => {
               onValueChange={setName}
               label="name"
               required
+              as={Row}
             />
+
+            <Row style={{ paddingTop: 5 }}>
+              <label> Rating:</label>
+              <Rate onChange={setRating} />
+            </Row>
             <br />
           </Col>
           <Col>
@@ -80,23 +88,13 @@ export const NewReview = ({ product }: props) => {
               />
             </Row>
           </Col>
-          <Col>
-            <Row>
-              <Col>
-                <br />
-                <label> Rating:</label>
-                <div>
-                  <Rate onChange={setRating} />
-                </div>
-              </Col>
-            </Row>
-          </Col>
+          <Col></Col>
           <Col>
             <br />
-            <button type="submit">Submit</button>
+            <Button type="submit">Submit</Button>
           </Col>
         </Form>
       </Row>
-    </Container>
+    </>
   );
 };

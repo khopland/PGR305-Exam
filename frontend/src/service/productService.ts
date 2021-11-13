@@ -5,6 +5,10 @@ export const getAllProducts = async () => {
   const res = await axios.get('/product');
   return res.data as IProduct[];
 };
+export const getProductById = async (id: String) => {
+  const res = await axios.get(`/product/${id}`);
+  return res.data as IProduct;
+};
 
 export const postProduct = async (
   product: IProduct,

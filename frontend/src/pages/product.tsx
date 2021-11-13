@@ -8,31 +8,38 @@ import { productContext } from '../context/productContext';
 import { ShopingCartContext } from '../context/shopContext';
 import IProduct from '../interfaces/product';
 import { showMoney } from '../lib/showMoney';
-import { getAllProducts } from '../service/productService';
+import { getProductById } from '../service/productService';
 import Button from 'react-bootstrap/esm/Button';
 import { NewReview } from '../components/order/newReview';
+import { Review } from '../components/order/reviewComponent';
 
 export const Product: FC = () => {
-  const params = useParams();
-  const { value, setContext } = useContext(productContext);
+  const { productid } = useParams();
+  const { value } = useContext(productContext);
   const { addToShopingCart } = useContext(ShopingCartContext);
   const [amount, setAmount] = useState(1);
   const [product, setProduct] = useState<IProduct | null>(null);
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    getProduct();
+  }, [value, productid]);
+
+  useEffect(() => {
     setError(false);
-    if (value?.length === 0 || value === null) {
-      getProducts();
-    }
-    const product = value?.find((x) => x.id === params.productid);
-    setProduct(product || null);
-    if (product === null) {
+    if (product === null) setError(true);
+  }, [product]);
+
+  const getProduct = async () => {
+    setError(false);
+    if (productid === undefined) {
       setError(true);
+      return;
     }
-  }, [value]);
-  const getProducts = async () => {
-    setContext((await getAllProducts()) as IProduct[]);
+    if (value?.length === 0 || value === null) {
+      const data = await getProductById(productid);
+      setProduct(data);
+    } else setProduct(value.find((x) => x.id === productid) || null);
   };
 
   const onClick = () => {
@@ -116,7 +123,15 @@ export const Product: FC = () => {
               </Col>
             </Row>
           </Row>
-          <NewReview product={product} />
+
+          <Review product={product}>
+            <NewReview
+              product={product}
+              onSubmit={async () => {
+                setProduct(await getProductById(productid || ''));
+              }}
+            />
+          </Review>
         </>
       ) : (
         <h1>Loading...</h1>
