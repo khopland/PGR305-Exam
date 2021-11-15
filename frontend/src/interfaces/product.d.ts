@@ -1,5 +1,5 @@
-import { Category } from "./categoryEnum";
-import IReview from "./review";
+import { Category } from '../enum/categoryEnum';
+import IReview from './review';
 
 export default interface IProduct {
   id?: String;
@@ -9,4 +9,5 @@ export default interface IProduct {
   image?: string;
   category: Category;
   reviews?: Array<IReview>;
+  sizes: Array<string>;
 }

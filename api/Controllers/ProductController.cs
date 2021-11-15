@@ -41,7 +41,8 @@ namespace API.Controllers
         [HttpPost]
         public async Task<ActionResult<Product>> Create(Product product)
         {
-            return await _productService.Create(product);
+            var newProduct = await _productService.Create(product);
+            return Created($"/product/{newProduct.Id}",newProduct);
         }
 
         [HttpPut("{id:guid}")]

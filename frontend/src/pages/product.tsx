@@ -5,26 +5,28 @@ import Row from 'react-bootstrap/esm/Row';
 import Image from 'react-bootstrap/esm/Image';
 import { useParams } from 'react-router-dom';
 import { productContext } from '../context/productContext';
-import { ShopingCartContext } from '../context/shopContext';
+import { ShopingCartContext } from '../context/shopingCartContext';
 import IProduct from '../interfaces/product';
 import { showMoney } from '../lib/showMoney';
 import Button from 'react-bootstrap/esm/Button';
 import { NewReview } from '../components/review/newReview';
 import { Reviews } from '../components/review/reviewComponent';
+import Form from 'react-bootstrap/esm/Form';
 
 export const Product: FC = () => {
   const { productid } = useParams();
-  const { value, getById, refresh } = useContext(productContext);
+  const { getById, refresh } = useContext(productContext);
   const { addToShopingCart } = useContext(ShopingCartContext);
   const [amount, setAmount] = useState(1);
+  const [size, setSize] = useState('');
   const [product, setProduct] = useState<IProduct | null>(null);
   const [error, setError] = useState(false);
-
   useEffect(() => {
     getProduct();
-  }, [value, productid]);
-
+  }, [productid]);
   useEffect(() => {
+    if (product) setSize(product.sizes[0]);
+
     setError(false);
     if (product === null) setError(true);
   }, [product]);
@@ -38,7 +40,7 @@ export const Product: FC = () => {
 
   const onClick = () => {
     if (product) {
-      addToShopingCart({ product, amount });
+      addToShopingCart({ product, amount, size });
       setAmount(1);
     }
   };
@@ -86,30 +88,56 @@ export const Product: FC = () => {
               {product.description}
             </Row>
             <Row>
-              <Col md={{ span: 3, offset: 4 }}>
-                <label>Amount:</label>
-                <input
-                  type="number"
-                  value={amount}
-                  onChange={(e) =>
-                    setAmount(
-                      parseInt(e.target.value) >= 1
-                        ? parseInt(e.target.value)
-                        : 1
-                    )
-                  }
-                  required
-                />
+              <Col md={{ span: 3, offset: 2 }}>
+                <Form.Group>
+                  <Form.Label>Size</Form.Label>
+                  <Form.Select
+                    aria-label="Default select example"
+                    required
+                    value={size}
+                    onChange={(e) => setSize(e.currentTarget.value)}
+                  >
+                    {product.sizes ? (
+                      product.sizes.map((p, i) => {
+                        return (
+                          <option key={i} value={p}>
+                            {p}
+                          </option>
+                        );
+                      })
+                    ) : (
+                      <option value={''}>test</option>
+                    )}
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group>
+                  <Form.Label>Amount:</Form.Label>
+                  <Form.Control
+                    type="number"
+                    value={amount}
+                    onChange={(e) =>
+                      setAmount(
+                        parseInt(e.target.value) >= 1
+                          ? parseInt(e.target.value)
+                          : 1
+                      )
+                    }
+                    required
+                  />
+                </Form.Group>
               </Col>
               <Col>
                 <Button
                   variant="primary"
                   onClick={onClick}
                   style={{
+                    marginTop: '2rem',
                     display: 'flex',
                     justifyContent: 'center',
                     justifyItems: 'center',
-                    width: '60%',
+                    width: '80%',
                   }}
                 >
                   {showMoney(product.price)}

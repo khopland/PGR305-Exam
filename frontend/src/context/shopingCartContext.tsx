@@ -1,6 +1,6 @@
-import { createContext, FC } from "react";
-import ICart from "../interfaces/cart";
-import { useLocalStorage } from "../lib/useLocalSotrage";
+import { createContext, FC } from 'react';
+import ICart from '../interfaces/cart';
+import { useLocalStorage } from '../lib/useLocalSotrage';
 
 export type shopingCartContextType = {
   shopingCart: ICart[];
@@ -12,49 +12,56 @@ export type shopingCartContextType = {
 export const ShopingCartContext = createContext<shopingCartContextType>({
   shopingCart: [],
   addToShopingCart: () => {
-    throw new Error("Context not initialized");
+    throw new Error('Context not initialized');
   },
   removeFromShopingCart: () => {
-    throw new Error("Context not initialized");
+    throw new Error('Context not initialized');
   },
   emtyShopingCart: () => {
-    throw new Error("Context not initialized");
+    throw new Error('Context not initialized');
   },
 });
 
 export const ShopingCartProvider: FC = ({ children }) => {
   const [shopingCart, setShopingCart] = useLocalStorage(
-    "shopingCart",
+    'shopingCart',
     [] as ICart[]
   );
   const validateShopingCart = (shopingCart: ICart): boolean =>
-    shopingCart.amount <= 0;
+    shopingCart.amount >= 0 &&
+    shopingCart.product.sizes?.find((x) => x === shopingCart.size) !==
+      undefined;
+
+  const findItem = (item: ICart, shopingCart: ICart): boolean =>
+    item.product.id === shopingCart.product.id &&
+    item.size === shopingCart.size;
 
   const addToShopingCart = (shopingCart: ICart) =>
     validateShopingCart(shopingCart)
-      ? false
-      : setShopingCart((state) =>
-          state.find((item) => item.product.id === shopingCart.product.id)
+      ? setShopingCart((state) =>
+          state.find((item) => findItem(item, shopingCart))
             ? state.map((item) =>
-                item.product.id === shopingCart.product.id
+                findItem(item, shopingCart)
                   ? { ...item, amount: item.amount + shopingCart.amount }
                   : item
               )
             : [...state, shopingCart]
-        );
+        )
+      : false;
 
   const removeFromShopingCart = (shopingCart: ICart) =>
     validateShopingCart(shopingCart)
-      ? false
-      : setShopingCart((state) =>
+      ? setShopingCart((state) =>
           state
             .map((item) =>
-              item.product.id === shopingCart.product.id
+              findItem(item, shopingCart)
                 ? { ...item, amount: item.amount - shopingCart.amount }
                 : item
             )
             .filter((item) => item.amount > 0)
-        );
+        )
+      : false;
+
   const emtyShopingCart = () => setShopingCart([]);
 
   return (
