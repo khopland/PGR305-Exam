@@ -1,16 +1,16 @@
-import { FC, useContext, useEffect, useState } from "react";
-import Col from "react-bootstrap/esm/Col";
-import Container from "react-bootstrap/esm/Container";
-import Row from "react-bootstrap/esm/Row";
-import Image from "react-bootstrap/esm/Image";
-import { useParams } from "react-router-dom";
-import { productContext } from "../context/productContext";
-import { ShopingCartContext } from "../context/shopContext";
-import IProduct from "../interfaces/product";
-import { showMoney } from "../lib/showMoney";
-import Button from "react-bootstrap/esm/Button";
-import { NewReview } from "../components/order/newReview";
-import { Review } from "../components/order/reviewComponent";
+import { FC, useContext, useEffect, useState } from 'react';
+import Col from 'react-bootstrap/esm/Col';
+import Container from 'react-bootstrap/esm/Container';
+import Row from 'react-bootstrap/esm/Row';
+import Image from 'react-bootstrap/esm/Image';
+import { useParams } from 'react-router-dom';
+import { productContext } from '../context/productContext';
+import { ShopingCartContext } from '../context/shopContext';
+import IProduct from '../interfaces/product';
+import { showMoney } from '../lib/showMoney';
+import Button from 'react-bootstrap/esm/Button';
+import { NewReview } from '../components/review/newReview';
+import { Reviews } from '../components/review/reviewComponent';
 
 export const Product: FC = () => {
   const { productid } = useParams();
@@ -50,27 +50,27 @@ export const Product: FC = () => {
         <>
           <Row
             style={{
-              display: "flex",
-              justifyContent: "center",
-              justifyItems: "center",
+              display: 'flex',
+              justifyContent: 'center',
+              justifyItems: 'center',
             }}
           >
             <Image
               src={product.image}
               alt={product.name}
               style={{
-                paddingTop: "3rem",
-                objectFit: "cover",
-                width: "60vw",
-                height: "80vh",
+                paddingTop: '3rem',
+                objectFit: 'cover',
+                width: '60vw',
+                height: '80vh',
               }}
             />
             <Row
               as="h3"
               style={{
-                display: "flex",
-                justifyContent: "center",
-                justifyItems: "center",
+                display: 'flex',
+                justifyContent: 'center',
+                justifyItems: 'center',
               }}
             >
               {product.name} ({product.id})
@@ -78,9 +78,9 @@ export const Product: FC = () => {
             <Row
               as="p"
               style={{
-                display: "flex",
-                justifyContent: "center",
-                justifyItems: "center",
+                display: 'flex',
+                justifyContent: 'center',
+                justifyItems: 'center',
               }}
             >
               {product.description}
@@ -106,10 +106,10 @@ export const Product: FC = () => {
                   variant="primary"
                   onClick={onClick}
                   style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    justifyItems: "center",
-                    width: "60%",
+                    display: 'flex',
+                    justifyContent: 'center',
+                    justifyItems: 'center',
+                    width: '60%',
                   }}
                 >
                   {showMoney(product.price)}
@@ -118,14 +118,14 @@ export const Product: FC = () => {
             </Row>
           </Row>
 
-          <Review product={product}>
+          <Reviews product={product}>
             <NewReview
               product={product}
               onSubmit={async () => {
                 refresh();
               }}
             />
-          </Review>
+          </Reviews>
         </>
       ) : (
         <h1>Loading...</h1>
