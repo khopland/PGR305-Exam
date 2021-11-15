@@ -1,6 +1,6 @@
-import { createContext, FC } from 'react';
-import ICart from '../interfaces/cart';
-import { useLocalStorage } from '../lib/useLocalSotrage';
+import { createContext, FC } from "react";
+import ICart from "../interfaces/cart";
+import { useLocalStorage } from "../lib/useLocalSotrage";
 
 export type shopingCartContextType = {
   shopingCart: ICart[];
@@ -12,19 +12,19 @@ export type shopingCartContextType = {
 export const ShopingCartContext = createContext<shopingCartContextType>({
   shopingCart: [],
   addToShopingCart: () => {
-    throw new Error('Context not initialized');
+    throw new Error("Context not initialized");
   },
   removeFromShopingCart: () => {
-    throw new Error('Context not initialized');
+    throw new Error("Context not initialized");
   },
   emtyShopingCart: () => {
-    throw new Error('Context not initialized');
+    throw new Error("Context not initialized");
   },
 });
 
 export const ShopingCartProvider: FC = ({ children }) => {
   const [shopingCart, setShopingCart] = useLocalStorage(
-    'shopingCart',
+    "shopingCart",
     [] as ICart[]
   );
   const validateShopingCart = (shopingCart: ICart): boolean =>

@@ -1,10 +1,10 @@
-import React, { FC, useContext } from 'react';
-import Button from 'react-bootstrap/esm/Button';
-import Image from 'react-bootstrap/esm/Image';
-import { useNavigate } from 'react-router-dom';
-import { ShopingCartContext } from '../../context/shopingCartContext';
-import ICart from '../../interfaces/cart';
-import { showMoney } from '../../lib/showMoney';
+import React, { FC, useContext } from "react";
+import Button from "react-bootstrap/esm/Button";
+import Image from "react-bootstrap/esm/Image";
+import { useNavigate } from "react-router-dom";
+import { ShopingCartContext } from "../../context/shopingCartContext";
+import ICart from "../../interfaces/cart";
+import { showMoney } from "../../lib/showMoney";
 type props = {
   item: ICart;
 };
@@ -29,11 +29,11 @@ export const CartItem: FC<props> = ({ item }) => {
           }}
           src={item.product.image}
           style={{
-            objectFit: 'cover',
-            width: '10rem',
-            height: '7rem',
-            paddingLeft: '0.3rem',
-            borderRadius: '1rem',
+            objectFit: "cover",
+            width: "10rem",
+            height: "7rem",
+            paddingLeft: "0.3rem",
+            borderRadius: "1rem",
           }}
         />
       </td>

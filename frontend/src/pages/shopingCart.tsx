@@ -1,15 +1,15 @@
-import { useContext, useMemo, useState } from 'react';
-import Button from 'react-bootstrap/esm/Button';
-import Col from 'react-bootstrap/esm/Col';
-import Container from 'react-bootstrap/esm/Container';
-import Row from 'react-bootstrap/esm/Row';
-import Alert from 'react-bootstrap/esm/Alert';
-import { ShopingCartContext } from '../context/shopingCartContext';
-import IProduct from '../interfaces/product';
-import { showMoney } from '../lib/showMoney';
-import { CreateOrder } from '../service/orderService';
-import ICart from '../interfaces/cart';
-import { CartItem } from '../components/shopingCart/cartItem';
+import { useContext, useMemo, useState } from "react";
+import Button from "react-bootstrap/esm/Button";
+import Col from "react-bootstrap/esm/Col";
+import Container from "react-bootstrap/esm/Container";
+import Row from "react-bootstrap/esm/Row";
+import Alert from "react-bootstrap/esm/Alert";
+import { ShopingCartContext } from "../context/shopingCartContext";
+import IProduct from "../interfaces/product";
+import { showMoney } from "../lib/showMoney";
+import { CreateOrder } from "../service/orderService";
+import ICart from "../interfaces/cart";
+import { CartItem } from "../components/shopingCart/cartItem";
 
 export const Cart = () => {
   const [show, setShow] = useState(false);

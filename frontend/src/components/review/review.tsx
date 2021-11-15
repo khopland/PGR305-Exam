@@ -1,7 +1,7 @@
-import Rate from 'rc-rate';
-import { FC } from 'react';
-import Col from 'react-bootstrap/esm/Col';
-import IReview from '../../interfaces/review';
+import Rate from "rc-rate";
+import { FC } from "react";
+import Col from "react-bootstrap/esm/Col";
+import IReview from "../../interfaces/review";
 
 type prop = { review: IReview };
 

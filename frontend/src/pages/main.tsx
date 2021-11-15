@@ -1,17 +1,17 @@
-import { useContext, useEffect, useMemo, useState } from 'react';
-import Container from 'react-bootstrap/esm/Container';
-import Row from 'react-bootstrap/esm/Row';
-import { useNavigate } from 'react-router-dom';
-import { ProductCard } from '../components/home/productCard';
-import { ProductCausel } from '../components/home/ProductCarusel';
-import { productContext } from '../context/productContext';
-import { Category } from '../enum/categoryEnum';
-import IProduct from '../interfaces/product';
+import { useContext, useEffect, useMemo, useState } from "react";
+import Container from "react-bootstrap/esm/Container";
+import Row from "react-bootstrap/esm/Row";
+import { useNavigate } from "react-router-dom";
+import { ProductCard } from "../components/home/productCard";
+import { ProductCausel } from "../components/home/ProductCarusel";
+import { productContext } from "../context/productContext";
+import { Category } from "../enum/categoryEnum";
+import IProduct from "../interfaces/product";
 
 export const Main = () => {
   const navigate = useNavigate();
   const { value, refresh } = useContext(productContext);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const result = useMemo(
     () =>
       value?.filter(
@@ -38,7 +38,7 @@ export const Main = () => {
       <br />
       <input
         style={{
-          width: '100%',
+          width: "100%",
         }}
         type="text"
         value={search}

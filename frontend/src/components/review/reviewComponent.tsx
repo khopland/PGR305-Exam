@@ -1,11 +1,11 @@
-import Rate from 'rc-rate';
-import { FC } from 'react';
-import Col from 'react-bootstrap/esm/Col';
-import Container from 'react-bootstrap/esm/Container';
-import Row from 'react-bootstrap/esm/Row';
-import IProduct from '../../interfaces/product';
-import IReview from '../../interfaces/review';
-import { Review } from './review';
+import Rate from "rc-rate";
+import { FC } from "react";
+import Col from "react-bootstrap/esm/Col";
+import Container from "react-bootstrap/esm/Container";
+import Row from "react-bootstrap/esm/Row";
+import IProduct from "../../interfaces/product";
+import IReview from "../../interfaces/review";
+import { Review } from "./review";
 
 type prop = {
   product: IProduct;
@@ -13,7 +13,7 @@ type prop = {
 
 export const Reviews: FC<prop> = ({ product, children }) => {
   return (
-    <Container style={{ paddingTop: '10vh' }}>
+    <Container style={{ paddingTop: "10vh" }}>
       <h1>Review</h1>
 
       <Row xs={1} md={4} className="g-4">

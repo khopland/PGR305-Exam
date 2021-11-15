@@ -1,19 +1,19 @@
-import React, { useRef, useState } from 'react';
-import Button from 'react-bootstrap/esm/Button';
-import Col from 'react-bootstrap/esm/Col';
-import Container from 'react-bootstrap/esm/Container';
-import Form from 'react-bootstrap/esm/Form';
-import Row from 'react-bootstrap/esm/Row';
-import { InputField } from '../components/common/inputField';
-import { Category } from '../enum/categoryEnum';
-import { postProduct } from '../service/productService';
+import React, { useRef, useState } from "react";
+import Button from "react-bootstrap/esm/Button";
+import Col from "react-bootstrap/esm/Col";
+import Container from "react-bootstrap/esm/Container";
+import Form from "react-bootstrap/esm/Form";
+import Row from "react-bootstrap/esm/Row";
+import { InputField } from "../components/common/inputField";
+import { Category } from "../enum/categoryEnum";
+import { postProduct } from "../service/productService";
 
 export const AddNewProduct = () => {
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState("");
   const [category, setCategory] = useState<Category>(Category.Shirt);
-  const [curentSize, setCurentSize] = useState('');
+  const [curentSize, setCurentSize] = useState("");
   const [size, setSize] = useState<string[]>([]);
   const [img, setImg] = useState<File>();
   const ref = useRef<HTMLInputElement>(null);
@@ -34,27 +34,27 @@ export const AddNewProduct = () => {
         img
       ))
         ? clearData()
-        : alert('Error');
+        : alert("Error");
     }
   };
 
   const addSize = () => {
     const newSize = curentSize.trim();
-    if (newSize !== '' && !size.includes(newSize)) {
+    if (newSize !== "" && !size.includes(newSize)) {
       setSize([...size, curentSize]);
-      setCurentSize('');
+      setCurentSize("");
     }
   };
 
   const clearData = () => {
-    setName('');
+    setName("");
     setPrice(0);
-    setDescription('');
+    setDescription("");
     setCategory(0);
-    setCurentSize('');
+    setCurentSize("");
     setSize([]);
     setImg(undefined);
-    if (ref.current) ref.current.value = '';
+    if (ref.current) ref.current.value = "";
   };
 
   return (
@@ -111,7 +111,7 @@ export const AddNewProduct = () => {
               <Form.Control
                 as="textarea"
                 placeholder="Leave a description here (not required)"
-                style={{ height: '100px' }}
+                style={{ height: "100px" }}
                 value={description}
                 onChange={(e) => setDescription(e.currentTarget.value)}
               />
@@ -126,14 +126,14 @@ export const AddNewProduct = () => {
             />
             <br />
 
-            <Button onClick={addSize} size="sm" style={{ marginRight: '2rem' }}>
+            <Button onClick={addSize} size="sm" style={{ marginRight: "2rem" }}>
               add new size
             </Button>
 
             {size.map((s, i) => (
-              <i key={i} style={{ paddingRight: '1rem', fontSize: '1.3rem' }}>
+              <i key={i} style={{ paddingRight: "1rem", fontSize: "1.3rem" }}>
                 {s}
-                {i !== 0 ? '' : ','}
+                {i !== 0 ? "" : ","}
               </i>
             ))}
             <hr />

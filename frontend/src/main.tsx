@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Routing } from './routing';
-import { ShopingCartProvider } from './context/shopingCartContext';
-import { ProductProvider } from './context/productContext';
+import React from "react";
+import ReactDOM from "react-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Routing } from "./routing";
+import { ShopingCartProvider } from "./context/shopingCartContext";
+import { ProductProvider } from "./context/productContext";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,5 +13,5 @@ ReactDOM.render(
       </ShopingCartProvider>
     </ProductProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );

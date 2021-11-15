@@ -1,25 +1,25 @@
-import { FC } from 'react';
-import Col from 'react-bootstrap/esm/Col';
-import Row from 'react-bootstrap/esm/Row';
-import IOrder from '../../interfaces/order';
-import { showMoney } from '../../lib/showMoney';
+import { FC } from "react";
+import Col from "react-bootstrap/esm/Col";
+import Row from "react-bootstrap/esm/Row";
+import IOrder from "../../interfaces/order";
+import { showMoney } from "../../lib/showMoney";
 
 interface props {
   order: IOrder;
 }
 export const OrderList: FC<props> = ({ order }: props) => {
-  function ISOtoLongDate(isoString: string, locale = 'no-NO') {
+  function ISOtoLongDate(isoString: string, locale = "no-NO") {
     const date = new Date(isoString);
     const longDate = new Intl.DateTimeFormat(locale, {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
+      month: "short",
+      day: "numeric",
+      year: "numeric",
     }).format(date);
     return longDate;
   }
 
   return (
-    <Row style={{ paddingBottom: '2rem' }}>
+    <Row style={{ paddingBottom: "2rem" }}>
       <h4>order nr: {order.id}</h4>
       <h6> {order.date && ` ${ISOtoLongDate(order.date)}`}</h6>
       <br />
