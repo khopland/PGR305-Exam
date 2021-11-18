@@ -1,15 +1,14 @@
 import { useContext, useMemo, useState } from "react";
+import { Table } from "react-bootstrap";
+import Alert from "react-bootstrap/esm/Alert";
 import Button from "react-bootstrap/esm/Button";
 import Col from "react-bootstrap/esm/Col";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
-import Alert from "react-bootstrap/esm/Alert";
+import { CartItem } from "../components/shopingCart/cartItem";
 import { ShopingCartContext } from "../context/shopingCartContext";
-import IProduct from "../interfaces/product";
 import { showMoney } from "../lib/showMoney";
 import { CreateOrder } from "../service/orderService";
-import ICart from "../interfaces/cart";
-import { CartItem } from "../components/shopingCart/cartItem";
 
 export const Cart = () => {
   const [show, setShow] = useState(false);
@@ -46,7 +45,7 @@ export const Cart = () => {
       <Row className="mt-5 justify-content-center">
         <Col lg={9}>
           <Row>
-            <table className="table shop-table">
+            <Table responsive striped bordered>
               <thead>
                 <tr>
                   <th className="b-0">Image</th>
@@ -84,7 +83,7 @@ export const Cart = () => {
                   </td>
                 </tr>
               </tfoot>
-            </table>
+            </Table>
           </Row>
         </Col>
       </Row>

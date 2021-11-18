@@ -1,30 +1,67 @@
-import React, { useRef, useState } from "react";
-import Button from "react-bootstrap/esm/Button";
-import Col from "react-bootstrap/esm/Col";
-import Container from "react-bootstrap/esm/Container";
-import Form from "react-bootstrap/esm/Form";
-import Row from "react-bootstrap/esm/Row";
-import { InputField } from "../components/common/inputField";
-import { Category } from "../enum/categoryEnum";
-import { postProduct } from "../service/productService";
+import axios from "axios";
+import React, {
+  Dispatch,
+  FC,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import { Container, Row, Form, Col, Button } from "react-bootstrap";
+import { Category } from "../../enum/categoryEnum";
+import IProduct from "../../interfaces/product";
+import { postProduct, updateProduct } from "../../service/productService";
+import { InputField } from "../common/inputField";
 
-export const AddNewProduct = () => {
+type props = {
+  done: boolean;
+  setDone: Dispatch<SetStateAction<boolean>>;
+  onHide: () => Promise<void>;
+  setError: (x: string) => void;
+  product: IProduct;
+};
+export const EditProduct: FC<props> = ({
+  done,
+  setDone,
+  setError,
+  onHide,
+  product,
+}) => {
   const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState(0.01);
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState<Category>(Category.Shirt);
   const [curentSize, setCurentSize] = useState("");
   const [size, setSize] = useState<string[]>([]);
   const [img, setImg] = useState<File>();
   const ref = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (done) handleSubmit();
+  }, [done]);
+
+  useEffect(() => {
+    init();
+  }, [product]);
+
+  const init = async () => {
+    setName(product.name);
+    setPrice(product.price);
+    setDescription(product?.description ? product.description : "");
+    setCategory(product.category);
+    setSize(product.sizes);
+  };
+
   const handleCange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.target.files?.length && setImg(e.target.files[0]);
   };
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (name.length > 1 && price > 0 && img && size.length > 0) {
-      (await postProduct(
+
+  const handleSubmit = async (e?: React.FormEvent<HTMLFormElement>) => {
+    e?.preventDefault();
+    if (name.length > 1 && price > 0 && size.length > 0) {
+      (await updateProduct(
         {
+          id: product.id,
           name,
           price: Math.round(price * 100),
           sizes: size,
@@ -33,8 +70,11 @@ export const AddNewProduct = () => {
         },
         img
       ))
-        ? clearData()
+        ? await clearData()
         : alert("Error");
+    } else {
+      setDone(false);
+      setError("All fields needs to be filled out and not negative price");
     }
   };
 
@@ -45,8 +85,11 @@ export const AddNewProduct = () => {
       setCurentSize("");
     }
   };
+  const deleteSize = (size: string) => {
+    setSize((s) => s?.filter((x) => x !== size));
+  };
 
-  const clearData = () => {
+  const clearData = async () => {
     setName("");
     setPrice(0);
     setDescription("");
@@ -55,6 +98,7 @@ export const AddNewProduct = () => {
     setSize([]);
     setImg(undefined);
     if (ref.current) ref.current.value = "";
+    await onHide();
   };
 
   return (
@@ -76,7 +120,7 @@ export const AddNewProduct = () => {
               type="number"
               value={price}
               onValueChange={setPrice}
-              label="price"
+              label="price (0.00)"
               required
             />
 
@@ -129,20 +173,16 @@ export const AddNewProduct = () => {
             <Button onClick={addSize} size="sm" style={{ marginRight: "2rem" }}>
               add new size
             </Button>
-
-            {size.map((s, i) => (
-              <i key={i} style={{ paddingRight: "1rem", fontSize: "1.3rem" }}>
-                {s}
-                {i !== 0 ? "" : ","}
-              </i>
-            ))}
-            <hr />
-          </Col>
-          <Col>
-            <br />
-            <Button type="submit" size="lg">
-              Submit
-            </Button>
+            <Row>
+              {size.map((s, i) => (
+                <Col key={i} onClick={() => deleteSize(s)}>
+                  <i style={{ paddingRight: "1rem", fontSize: "1.3rem" }}>
+                    {s}
+                    {i !== 0 ? "" : ","}
+                  </i>
+                </Col>
+              ))}
+            </Row>
           </Col>
         </Form>
       </Row>

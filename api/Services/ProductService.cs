@@ -43,6 +43,9 @@ namespace API.Services
             var p = await _products.Find(quiz => quiz.Id == id).FirstOrDefaultAsync();
             if (p == null) return false;
             product.Id = id;
+            if (product.Image == null) product.Image = p.Image;
+            if (product.Description == null) product.Description = p.Description;
+            product.Reviews = p.Reviews ?? new List<Review>();
             var res = await _products.ReplaceOneAsync(p => p.Id == id, product);
             return res is { IsAcknowledged: true, ModifiedCount: > 0 };
         }

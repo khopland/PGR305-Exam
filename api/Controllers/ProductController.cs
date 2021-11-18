@@ -42,12 +42,13 @@ namespace API.Controllers
         public async Task<ActionResult<Product>> Create(Product product)
         {
             var newProduct = await _productService.Create(product);
-            return Created($"/product/{newProduct.Id}",newProduct);
+            return Created($"/product/{newProduct.Id}", newProduct);
         }
 
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> Update(Guid id, Product product)
         {
+            Console.WriteLine(product.Price);
             return await _productService.Update(id, product) ? NoContent() : NotFound();
         }
 

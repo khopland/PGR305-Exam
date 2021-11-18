@@ -14,7 +14,7 @@ namespace API.Models
         public string? Description { get; set; }
         public string? Image { get; set; }
         public CategoryEnum Category { get; set; }
-        public List<Review>? Reviews { get; set; }
+        public List<Review> Reviews { get; set; } = new List<Review>();
         public List<string>? sizes { get; set; }
     }
 }

@@ -2,7 +2,7 @@ import { Category } from "../enum/categoryEnum";
 import IReview from "./review";
 
 export default interface IProduct {
-  id?: String;
+  id?: string;
   name: string;
   price: number;
   description?: string;

@@ -11,7 +11,7 @@ import { CreateReview } from "../../service/reviewService";
 import { InputField } from "../common/inputField";
 type props = {
   product: IProduct;
-  onSubmit: () => void;
+  onSubmit: () => Promise<void>;
 };
 export const NewReview = ({ product, onSubmit }: props) => {
   const [name, setName] = useState("");
@@ -41,7 +41,7 @@ export const NewReview = ({ product, onSubmit }: props) => {
     if (
       await CreateReview(product, { name, review, rating, date: new Date() })
     ) {
-      onSubmit();
+      await onSubmit();
       setName("");
       setReview("");
       setRating(0);

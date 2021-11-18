@@ -150,7 +150,7 @@ export const Product: FC = () => {
             <NewReview
               product={product}
               onSubmit={async () => {
-                refresh();
+                setTimeout(async () => await refresh(), 500);
               }}
             />
           </Reviews>

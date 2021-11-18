@@ -1,12 +1,5 @@
+import { createContext, FC, useEffect, useState } from "react";
 import IProduct from "../interfaces/product";
-import {
-  createContext,
-  Dispatch,
-  FC,
-  SetStateAction,
-  useEffect,
-  useState,
-} from "react";
 import { getAllProducts, getProductById } from "../service/productService";
 
 type IProductContext = {
@@ -27,7 +20,9 @@ export const ProductProvider: FC = ({ children }) => {
   useEffect(() => {
     getContext();
   }, []);
-  const getContext = async () => setContext(await getAllProducts());
+  const getContext = async () => {
+    setContext(await getAllProducts());
+  };
 
   const getById = async (id: string) =>
     value.find((product) => product.id === id) || (await getProductById(id));

@@ -8,6 +8,7 @@ export interface props {
   required?: boolean;
   type?: string;
   label: string;
+  placeholder?: string;
   as?: React.ElementType<any>;
 }
 
@@ -17,6 +18,7 @@ export function InputField({
   type = "text",
   required = false,
   label,
+  placeholder = label,
   as = Row,
 }: props) {
   return (
@@ -27,6 +29,7 @@ export function InputField({
         value={value}
         required={required}
         onChange={(e) => onValueChange(e.target.value)}
+        placeholder={placeholder}
       />
     </Form.Group>
   );

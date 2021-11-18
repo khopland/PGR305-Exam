@@ -21,7 +21,7 @@ export const MainNav = () => {
             orders
           </Nav.Link>
           <Nav.Link as={Link} to="admin">
-            add new product
+            Admin
           </Nav.Link>
         </Nav>
       </Container>
