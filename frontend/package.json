@@ -2,14 +2,14 @@
   "name": "frontend",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview",
+    "dev": "vite",
+    "dev:all": "concurrently \"npm run dev\" \"dotnet watch --project ../api \"",
     "format": "prettier --write ./src",
-    "dev:all": "concurrently \"npm run dev\" \"dotnet watch --project ../api \""
+    "serve": "vite preview",
+    "start": "npm run build && concurrently \"vite preview --port 3000\" \"dotnet run --project ../api \""
   },
   "dependencies": {
-    "@types/react-router-dom": "^5.1.9",
     "axios": "^0.24.0",
     "bootstrap": "^5.1.1",
     "rc-rate": "^2.9.1",
@@ -25,6 +25,6 @@
     "concurrently": "^6.3.0",
     "prettier": "^2.4.1",
     "typescript": "^4.3.2",
-    "vite": "^2.6.4"
+    "vite": "^2.6.14"
   }
 }
