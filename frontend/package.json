@@ -4,7 +4,7 @@
   "scripts": {
     "build": "tsc && vite build",
     "dev": "vite",
-    "dev:all": "concurrently \"npm run dev\" \"dotnet watch --project ../api \"",
+    "dev:all": "concurrently \"npm run dev\" \"dotnet watch run --project ../api \"",
     "format": "prettier --write ./src",
     "serve": "vite preview",
     "start": "npm run build && concurrently \"vite preview --port 3000\" \"dotnet run --project ../api \""

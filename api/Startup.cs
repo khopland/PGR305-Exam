@@ -18,16 +18,17 @@ namespace api
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         [System.Obsolete]
         public void ConfigureServices(IServiceCollection services)
         {
+            //mongodb
             MongoDefaults.GuidRepresentation = MongoDB.Bson.GuidRepresentation.Standard;
             services.AddSingleton<IMongoDatabase>(
                 new MongoClient(Configuration.GetSection("mongodb:ConnectionString").Value)
                     .GetDatabase(Configuration.GetSection("mongodb:databaseName").Value));
             services.AddTransient<ProductService>();
             services.AddTransient<OrderService>();
+
             services.AddControllers();
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo { Title = "api", Version = "v1" }); });
             services.AddCors(options => options.AddPolicy("AllowAnyOrigin", builder => builder
@@ -37,7 +38,6 @@ namespace api
             ));
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
