@@ -1,6 +1,6 @@
 # PGR305-exam
 
-## OPS:
+## NB:
 
 - need to run `npm install or yarn` in forontend
 - need to set the ConnectionString in appsettings.json file in api
