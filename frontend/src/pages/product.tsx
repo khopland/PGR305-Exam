@@ -1,21 +1,21 @@
 import { FC, useContext, useEffect, useState } from "react";
+import Button from "react-bootstrap/esm/Button";
 import Col from "react-bootstrap/esm/Col";
 import Container from "react-bootstrap/esm/Container";
-import Row from "react-bootstrap/esm/Row";
+import Form from "react-bootstrap/esm/Form";
 import Image from "react-bootstrap/esm/Image";
+import Row from "react-bootstrap/esm/Row";
 import { useParams } from "react-router-dom";
+import { NewReview } from "../components/review/newReview";
+import { Reviews } from "../components/review/reviewComponent";
 import { productContext } from "../context/productContext";
 import { ShopingCartContext } from "../context/shopingCartContext";
 import IProduct from "../interfaces/product";
 import { showMoney } from "../lib/showMoney";
-import Button from "react-bootstrap/esm/Button";
-import { NewReview } from "../components/review/newReview";
-import { Reviews } from "../components/review/reviewComponent";
-import Form from "react-bootstrap/esm/Form";
 
 export const Product: FC = () => {
   const { productid } = useParams();
-  const { getById, refresh } = useContext(productContext);
+  const { getById, refresh, value } = useContext(productContext);
   const { addToShopingCart } = useContext(ShopingCartContext);
   const [amount, setAmount] = useState(1);
   const [size, setSize] = useState("");
@@ -23,9 +23,10 @@ export const Product: FC = () => {
   const [error, setError] = useState(false);
   useEffect(() => {
     getProduct();
-  }, [productid]);
+  }, [productid, value]);
+
   useEffect(() => {
-    if (product) setSize(product.sizes[0]);
+    if (product && size === "") setSize(product.sizes[0]);
 
     setError(false);
     if (product === null) setError(true);
@@ -150,7 +151,7 @@ export const Product: FC = () => {
             <NewReview
               product={product}
               onSubmit={async () => {
-                setTimeout(async () => await refresh(), 500);
+                await refresh();
               }}
             />
           </Reviews>

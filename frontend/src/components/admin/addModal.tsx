@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Alert, Button, Modal } from "react-bootstrap";
+import Alert from "react-bootstrap/esm/Alert";
+import Button from "react-bootstrap/esm/Button";
+import Modal from "react-bootstrap/esm/Modal";
 import { AddNewProduct } from "./addNewProduct";
 
 type props = {

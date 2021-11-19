@@ -1,5 +1,7 @@
-import React, { useState } from "react";
-import { Modal, Button, Alert } from "react-bootstrap";
+import { useState } from "react";
+import Alert from "react-bootstrap/esm/Alert";
+import Button from "react-bootstrap/esm/Button";
+import Modal from "react-bootstrap/esm/Modal";
 import IProduct from "../../interfaces/product";
 import { EditProduct } from "./editProduct";
 

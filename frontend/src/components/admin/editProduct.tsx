@@ -7,7 +7,11 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { Container, Row, Form, Col, Button } from "react-bootstrap";
+import Button from "react-bootstrap/esm/Button";
+import Col from "react-bootstrap/esm/Col";
+import Container from "react-bootstrap/esm/Container";
+import Form from "react-bootstrap/esm/Form";
+import Row from "react-bootstrap/esm/Row";
 import { Category } from "../../enum/categoryEnum";
 import IProduct from "../../interfaces/product";
 import { postProduct, updateProduct } from "../../service/productService";

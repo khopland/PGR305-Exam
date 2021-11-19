@@ -33,7 +33,7 @@ export const NewReview = ({ product, onSubmit }: props) => {
       seterrorMessage("Review must be at least 3 characters long");
       return;
     }
-    if (rating < 0) {
+    if (rating <= 0) {
       setError(true);
       seterrorMessage("Rating must be set");
       return;

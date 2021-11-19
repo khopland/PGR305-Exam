@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { Modal, Button } from "react-bootstrap";
+import Button from "react-bootstrap/esm/Button";
+import Modal from "react-bootstrap/esm/Modal";
 import IProduct from "../../interfaces/product";
 
 type props = {

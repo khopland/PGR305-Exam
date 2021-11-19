@@ -16,10 +16,12 @@ export const Orders = () => {
     <Container>
       <br />
 
-      {orders ? (
+      {orders.length > 0 ? (
         orders?.map((order, i) => <OrderList key={i} order={order} />)
       ) : (
-        <div>No orders</div>
+        <Container style={{ textAlign: "center" }}>
+          <h1>No orders</h1>
+        </Container>
       )}
     </Container>
   );

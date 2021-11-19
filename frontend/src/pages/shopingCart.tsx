@@ -1,5 +1,5 @@
 import { useContext, useMemo, useState } from "react";
-import { Table } from "react-bootstrap";
+import Table from "react-bootstrap/esm/Table";
 import Alert from "react-bootstrap/esm/Alert";
 import Button from "react-bootstrap/esm/Button";
 import Col from "react-bootstrap/esm/Col";

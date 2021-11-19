@@ -1,5 +1,5 @@
 import { Dispatch, FC, SetStateAction } from "react";
-import { Form } from "react-bootstrap";
+import Form from "react-bootstrap/esm/Form";
 import { Category } from "../../enum/categoryEnum";
 type props = {
   category: Category;

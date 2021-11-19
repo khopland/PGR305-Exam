@@ -1,4 +1,5 @@
-import { Carousel, Container } from "react-bootstrap";
+import Carousel from "react-bootstrap/esm/Carousel";
+import Container from "react-bootstrap/esm/Container";
 
 export const ProductCausel = () => {
   return (

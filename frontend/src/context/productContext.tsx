@@ -21,7 +21,8 @@ export const ProductProvider: FC = ({ children }) => {
     getContext();
   }, []);
   const getContext = async () => {
-    setContext(await getAllProducts());
+    const products = await getAllProducts();
+    setContext(products);
   };
 
   const getById = async (id: string) =>

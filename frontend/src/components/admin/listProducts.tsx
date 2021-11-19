@@ -1,5 +1,9 @@
 import { FC, useContext, useState } from "react";
-import { Button, ButtonGroup, Container, Image, Table } from "react-bootstrap";
+import Button from "react-bootstrap/esm/Button";
+import ButtonGroup from "react-bootstrap/esm/ButtonGroup";
+import Container from "react-bootstrap/esm/Container";
+import Image from "react-bootstrap/esm/Image";
+import Table from "react-bootstrap/esm/Table";
 import { productContext } from "../../context/productContext";
 import IProduct from "../../interfaces/product";
 import { deleteProduct } from "../../service/productService";

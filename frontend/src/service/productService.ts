@@ -60,7 +60,6 @@ export const updateProduct = async (product: IProduct, image?: File) => {
     }
   }
   try {
-    console.log(product);
     const res = await axios.put(`/product/${product.id}`, product);
     return res.status === 204;
   } catch (e) {
