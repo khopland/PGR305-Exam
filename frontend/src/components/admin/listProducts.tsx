@@ -1,14 +1,14 @@
-import { FC, useContext, useState } from "react";
 import Button from "react-bootstrap/esm/Button";
 import ButtonGroup from "react-bootstrap/esm/ButtonGroup";
 import Container from "react-bootstrap/esm/Container";
 import Image from "react-bootstrap/esm/Image";
-import Table from "react-bootstrap/esm/Table";
-import { productContext } from "../../context/productContext";
 import IProduct from "../../interfaces/product";
-import { deleteProduct } from "../../service/productService";
+import Table from "react-bootstrap/esm/Table";
 import { DeleteModal } from "./deleteModal";
+import { deleteProduct } from "../../service/productService";
 import { EditModal } from "./editModal";
+import { FC, useContext, useState } from "react";
+import { productContext } from "../../context/productContext";
 
 type props = {};
 export const ListAdminProducts: FC<props> = ({}) => {

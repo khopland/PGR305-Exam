@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { ProductProvider } from "./context/productContext";
 import { Routing } from "./routing";
 import { ShopingCartProvider } from "./context/shopingCartContext";
-import { ProductProvider } from "./context/productContext";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "rc-rate/assets/index.css";
 
 ReactDOM.render(
   <React.StrictMode>

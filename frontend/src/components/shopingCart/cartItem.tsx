@@ -1,10 +1,10 @@
-import React, { FC, useContext } from "react";
 import Button from "react-bootstrap/esm/Button";
-import Image from "react-bootstrap/esm/Image";
-import { useNavigate } from "react-router-dom";
-import { ShopingCartContext } from "../../context/shopingCartContext";
 import ICart from "../../interfaces/cart";
+import Image from "react-bootstrap/esm/Image";
+import React, { FC, useContext } from "react";
+import { ShopingCartContext } from "../../context/shopingCartContext";
 import { showMoney } from "../../lib/showMoney";
+import { useNavigate } from "react-router-dom";
 type props = {
   item: ICart;
 };

@@ -1,4 +1,3 @@
-import { useContext, useState } from "react";
 import Button from "react-bootstrap/esm/Button";
 import Col from "react-bootstrap/esm/Col";
 import Container from "react-bootstrap/esm/Container";
@@ -6,6 +5,7 @@ import Row from "react-bootstrap/esm/Row";
 import { AddModal } from "../components/admin/addModal";
 import { ListAdminProducts } from "../components/admin/listProducts";
 import { productContext } from "../context/productContext";
+import { useContext, useState } from "react";
 
 export const Admin = () => {
   const { refresh } = useContext(productContext);

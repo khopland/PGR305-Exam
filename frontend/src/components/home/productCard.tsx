@@ -1,7 +1,7 @@
-import { FC } from "react";
 import Button from "react-bootstrap/esm/Button";
 import Card from "react-bootstrap/esm/Card";
 import IProduct from "../../interfaces/product";
+import { FC } from "react";
 import { showMoney } from "../../lib/showMoney";
 
 export interface ProductCardProps {

@@ -1,5 +1,5 @@
-import { createContext, FC, useEffect, useState } from "react";
 import IProduct from "../interfaces/product";
+import { createContext, FC, useEffect, useState } from "react";
 import { getAllProducts, getProductById } from "../service/productService";
 
 type IProductContext = {

@@ -1,6 +1,6 @@
-import { Product } from "./../pages/product";
 import IProduct from "../interfaces/product";
 import { axios } from "../lib/http";
+import { Product } from "./../pages/product";
 
 export const getAllProducts = async () => {
   const res = await axios.get("/product");

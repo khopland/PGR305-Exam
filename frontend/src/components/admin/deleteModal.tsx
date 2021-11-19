@@ -1,7 +1,7 @@
-import { FC } from "react";
 import Button from "react-bootstrap/esm/Button";
-import Modal from "react-bootstrap/esm/Modal";
 import IProduct from "../../interfaces/product";
+import Modal from "react-bootstrap/esm/Modal";
+import { FC } from "react";
 
 type props = {
   show: boolean;

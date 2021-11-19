@@ -1,5 +1,5 @@
-import { Category } from "../enum/categoryEnum";
 import IReview from "./review";
+import { Category } from "../enum/categoryEnum";
 
 export default interface IProduct {
   id?: string;

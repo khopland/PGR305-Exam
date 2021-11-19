@@ -1,10 +1,10 @@
+import { Admin } from "./pages/admin";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Main } from "./pages/main";
 import { Cart } from "./pages/shopingCart";
-import { Product } from "./pages/product";
+import { Main } from "./pages/main";
 import { MainNav } from "./components/common/mainNav";
 import { Orders } from "./pages/orders";
-import { Admin } from "./pages/admin";
+import { Product } from "./pages/product";
 
 export const Routing = () => {
   return (

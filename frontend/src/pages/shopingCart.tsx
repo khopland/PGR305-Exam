@@ -1,14 +1,14 @@
-import { useContext, useMemo, useState } from "react";
-import Table from "react-bootstrap/esm/Table";
 import Alert from "react-bootstrap/esm/Alert";
 import Button from "react-bootstrap/esm/Button";
 import Col from "react-bootstrap/esm/Col";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
+import Table from "react-bootstrap/esm/Table";
 import { CartItem } from "../components/shopingCart/cartItem";
+import { CreateOrder } from "../service/orderService";
 import { ShopingCartContext } from "../context/shopingCartContext";
 import { showMoney } from "../lib/showMoney";
-import { CreateOrder } from "../service/orderService";
+import { useContext, useMemo, useState } from "react";
 
 export const Cart = () => {
   const [show, setShow] = useState(false);

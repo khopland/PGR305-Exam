@@ -1,5 +1,5 @@
-import { createContext, FC } from "react";
 import ICart from "../interfaces/cart";
+import { createContext, FC } from "react";
 import { useLocalStorage } from "../lib/useLocalSotrage";
 
 export type shopingCartContextType = {

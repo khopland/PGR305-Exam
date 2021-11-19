@@ -1,3 +1,11 @@
+import Button from "react-bootstrap/esm/Button";
+import Col from "react-bootstrap/esm/Col";
+import Container from "react-bootstrap/esm/Container";
+import Form from "react-bootstrap/esm/Form";
+import Row from "react-bootstrap/esm/Row";
+import { Category } from "../../enum/categoryEnum";
+import { InputField } from "../common/inputField";
+import { postProduct } from "../../service/productService";
 import React, {
   Dispatch,
   SetStateAction,
@@ -5,14 +13,6 @@ import React, {
   useRef,
   useState,
 } from "react";
-import Button from "react-bootstrap/esm/Button";
-import Col from "react-bootstrap/esm/Col";
-import Container from "react-bootstrap/esm/Container";
-import Form from "react-bootstrap/esm/Form";
-import Row from "react-bootstrap/esm/Row";
-import { InputField } from "../common/inputField";
-import { Category } from "../../enum/categoryEnum";
-import { postProduct } from "../../service/productService";
 
 type props = {
   done: boolean;

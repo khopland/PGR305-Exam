@@ -1,10 +1,10 @@
-import Rate from "rc-rate";
-import { FC } from "react";
 import Col from "react-bootstrap/esm/Col";
 import Container from "react-bootstrap/esm/Container";
-import Row from "react-bootstrap/esm/Row";
 import IProduct from "../../interfaces/product";
 import IReview from "../../interfaces/review";
+import Rate from "rc-rate";
+import Row from "react-bootstrap/esm/Row";
+import { FC } from "react";
 import { Review } from "./review";
 
 type prop = {

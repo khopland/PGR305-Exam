@@ -1,7 +1,7 @@
-import { FC } from "react";
 import Col from "react-bootstrap/esm/Col";
-import Row from "react-bootstrap/esm/Row";
 import IOrder from "../../interfaces/order";
+import Row from "react-bootstrap/esm/Row";
+import { FC } from "react";
 import { showMoney } from "../../lib/showMoney";
 
 interface props {

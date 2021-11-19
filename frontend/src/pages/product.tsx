@@ -1,17 +1,17 @@
-import { FC, useContext, useEffect, useState } from "react";
 import Button from "react-bootstrap/esm/Button";
 import Col from "react-bootstrap/esm/Col";
 import Container from "react-bootstrap/esm/Container";
 import Form from "react-bootstrap/esm/Form";
 import Image from "react-bootstrap/esm/Image";
-import Row from "react-bootstrap/esm/Row";
-import { useParams } from "react-router-dom";
-import { NewReview } from "../components/review/newReview";
-import { Reviews } from "../components/review/reviewComponent";
-import { productContext } from "../context/productContext";
-import { ShopingCartContext } from "../context/shopingCartContext";
 import IProduct from "../interfaces/product";
+import Row from "react-bootstrap/esm/Row";
+import { FC, useContext, useEffect, useState } from "react";
+import { NewReview } from "../components/review/newReview";
+import { productContext } from "../context/productContext";
+import { Reviews } from "../components/review/reviewComponent";
+import { ShopingCartContext } from "../context/shopingCartContext";
 import { showMoney } from "../lib/showMoney";
+import { useParams } from "react-router-dom";
 
 export const Product: FC = () => {
   const { productid } = useParams();

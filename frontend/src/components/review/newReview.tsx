@@ -1,14 +1,13 @@
-import Rate from "rc-rate";
-import "rc-rate/assets/index.css";
-import { useState } from "react";
 import Alert from "react-bootstrap/esm/Alert";
 import Button from "react-bootstrap/esm/Button";
 import Col from "react-bootstrap/esm/Col";
 import Form from "react-bootstrap/esm/Form";
-import Row from "react-bootstrap/esm/Row";
 import IProduct from "../../interfaces/product";
+import Rate from "rc-rate";
+import Row from "react-bootstrap/esm/Row";
 import { CreateReview } from "../../service/reviewService";
 import { InputField } from "../common/inputField";
+import { useState } from "react";
 type props = {
   product: IProduct;
   onSubmit: () => Promise<void>;

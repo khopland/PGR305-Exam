@@ -1,13 +1,13 @@
-import { useContext, useEffect, useMemo, useState } from "react";
 import Container from "react-bootstrap/esm/Container";
+import IProduct from "../interfaces/product";
 import Row from "react-bootstrap/esm/Row";
-import { useNavigate } from "react-router-dom";
 import { CategorySelector } from "../components/home/categorySelector";
 import { ProductCard } from "../components/home/productCard";
 import { ProductCausel } from "../components/home/ProductCarusel";
-import { Search } from "../components/home/search";
 import { productContext } from "../context/productContext";
-import IProduct from "../interfaces/product";
+import { Search } from "../components/home/search";
+import { useContext, useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Main = () => {
   const navigate = useNavigate();
